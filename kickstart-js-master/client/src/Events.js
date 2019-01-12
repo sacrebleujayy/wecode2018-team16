@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import './Events.css'
 
-export default class Events extends React.Component {
+export default class Events extends Component {
 
   static propTypes = {
     currentEvents: PropTypes.object,
@@ -23,6 +24,7 @@ export default class Events extends React.Component {
         
         <div id='modal-container'>
           <div id='modal-content'>
+          <span className='close'>X</span>
           <form>
             <label>
               Name:
@@ -49,8 +51,8 @@ export default class Events extends React.Component {
         
         
         <h1>{month}</h1>
-        <button>arrow left</button>
-        <button> arrow right</button>
+        <button><FaArrowLeft/></button>
+        <button><FaArrowRight/></button>
         <ol>
 
         </ol>

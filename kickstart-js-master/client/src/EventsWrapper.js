@@ -12,8 +12,8 @@ class EventsWrapper extends Component {
         activeView: 'events',
     }
 
-    handleOnClick = (context) => {
-        this.setState({ activeView: context})
+    handleOnClick = (target) => {
+        this.setState({ activeView: target.value})
     }
 
     render() {
@@ -22,9 +22,9 @@ class EventsWrapper extends Component {
         return (
             <div>
                 <div id='button-container'>
-                    <button id='events' onClick={this.handleOnClick('events')}>Events</button>
-                    <button id='supplies' onClick={this.handleOnClick('supplies')}>Supplies</button>
-                    <button id='connect' onClick={this.handleOnClick('connect')}>Connect</button> 
+                    <button id='events' value='events' onClick={this.handleOnClick}>Events</button>
+                    <button id='supplies' value='supplies' onClick={this.handleOnClick}>Supplies</button>
+                    <button id='connect' value='connect' onClick={this.handleOnClick}>Connect</button> 
                 </div>
 
                 {activeView === 'events' &&

@@ -10,29 +10,29 @@ class App extends Component {
 
   componentDidMount() {
     // this.getDistrictData();
-    this.callApi();
+    // this.callApi();
   }
 
-  getDistrictData() {
-    this.callApi()
-      .then(res => {
-        this.setState({ 
-          district: res.district,
-          comm_organizer: res.comm_organizer,
-          events: res.events
-        });
-      })
-      .catch(err => console.log(err));
-  }
+  // getDistrictData() {
+  //   this.callApi()
+  //     .then(res => {
+  //       this.setState({ 
+  //         district: res.district,
+  //         comm_organizer: res.comm_organizer,
+  //         events: res.events
+  //       });
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
+  // callApi = async () => {
+  //   const response = await fetch('/api/hello');
+  //   const body = await response.json();
 
-    if (response.status !== 200) throw Error(body.message);
+  //   if (response.status !== 200) throw Error(body.message);
 
-    return body;
-  };
+  //   return body;
+  // };
 
   render() {
 
