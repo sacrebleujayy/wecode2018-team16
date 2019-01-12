@@ -81,7 +81,7 @@ app.get('/api/events', (req, res) => {
   
 app.post('/api/members', (req, res) => {
   console.log(req.body);
-  memberList.push(req.body.post);
+  memberList.push(req.body);
   res.send('Member added!');
 });
   
@@ -92,7 +92,7 @@ app.get('/api/members', (req, res) => {
 app.post('/api/addItem', (req, res) => {
   // displays in the terminal
   console.log(req.body);
-  toDoList.push(req.body.post);
+  toDoList.push(req.body);
   res.send('Event added!');
 });
   
