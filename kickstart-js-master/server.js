@@ -29,7 +29,7 @@ let toDoList = [
     'district':'Mr. Roger\'s Neighborhood',
     'types':['kids','gardening'],
     'mentor':'2',
-    'attendess':['1','4'],
+    'attendees':['1','4'],
     'description':'You get a zuchini! You get a zuchini! Everybody gets a zuchini!'
   }
 ];
