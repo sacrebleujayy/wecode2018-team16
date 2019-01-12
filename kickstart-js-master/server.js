@@ -96,12 +96,12 @@ app.post('/api/addItem', (req, res) => {
   res.send('Event added!');
 });
   
-app.post('/api/events/:eventId(\d+)/attendees', (req, res) => {
+app.post('/api/events/:eventId/attendees', (req, res) => {
   console.log(req.params);
   console.log(req.body);
   events.forEach(function(event) {
     if(event.id == req.params.eventId) {
-      event.attendees.push(req.body.id)
+      event.attendees.push(req.body.id);
       break;
     }
   });
