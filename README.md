@@ -28,6 +28,7 @@ Meets All of the Challenge Requirements
 An event based application where the events are bucketed and can allow a person to choose to be the mentor of the event
 - empowering the community to engage will allow organic sharing
 - create an event "share the shovels"
+
 Advertisingless sharing (allow people to find a shovel without having to read through all the posts with some kind of tagging mechanism)
 
 ## Main Architecture
