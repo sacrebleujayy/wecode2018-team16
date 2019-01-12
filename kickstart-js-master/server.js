@@ -120,6 +120,7 @@ function replaceMemberIdsWithNames(events) {
   let eventList = [];
   events.forEach(function(event) {
     let newEventItem = {};
+    newEventItem.id = event.id;
     newEventItem.name = event.name;
     newEventItem.date = event.date;
     newEventItem.address = event.address;
