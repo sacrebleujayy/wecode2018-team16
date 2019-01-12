@@ -128,6 +128,7 @@ function replaceMemberIdsWithNames(events) {
     newEventItem.description = event.description;
     let mentorId = event.mentor;
     
+    console.log(event.attendees);
     let attendees = [];
     for(member in memberList) {
       if(member.id == mentorId) {
@@ -139,7 +140,8 @@ function replaceMemberIdsWithNames(events) {
     }
     
     newEventItem.attendees = attendees;
+    eventList.push(newEventItem);
   }
   
-  return events;
+  return eventList;
 }
