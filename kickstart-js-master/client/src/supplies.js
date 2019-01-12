@@ -4,7 +4,7 @@ export default class Supplies extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'Let your neighbors know about extra supplies you have to share, or ask for supplies you need.'
+      value: 'Let other gardeners know about extra supplies you have to share, or ask for supplies you need.'
     };
 
     this.handleChange = this.handleChange.bind(this);
