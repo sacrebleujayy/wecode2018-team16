@@ -40,6 +40,8 @@ class App extends Component {
           <a href="#"><h1>Growing Gardens,<br></br>Growing Communities</h1></a>
         </header>
         <div className="organizer-wrapper">
+          <h2 id='image'><span>Lents District</span></h2>
+          <img src='/assets/garden-asset.jpg'/>
           <span className="organizer-name">Jane Doe</span>
           <button className="organizer-contact button">Contact</button>
         </div>
