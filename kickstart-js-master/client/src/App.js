@@ -4,18 +4,22 @@ import Events from './Events.js';
 
 class App extends Component {
   state = {
-    list: '',
-    post: '',
-    responseToPost: ''
+    district: ''
   };
 
   componentDidMount() {
-    this.updateTodoList();
+    this.getDistrictData();
   }
 
-  updateTodoList() {
+  getDistrictData() {
     this.callApi()
-      .then(res => this.setState({ list: res.toDoList }))
+      .then(res => {
+        this.setState({ 
+          district: res.district,
+          comm_organizer: res.comm_organizer,
+          events: res.events
+        });
+      })
       .catch(err => console.log(err));
   }
 
@@ -28,26 +32,18 @@ class App extends Component {
     return body;
   };
 
-  handleSubmit = async e => {
-    e.preventDefault();
-    const response = await fetch('/api/addItem', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ post: this.state.post })
-    });
-    const body = await response.text()
-     .then(this.updateTodoList());
-
-    this.setState({ responseToPost: body, post: '' });
-  };
-
   render() {
-
     return (
-      <div className="App">
-        <Events/>
+      <div className="wrapper">
+        <header className="header-wrapper">
+          <a href="#"><h1>Growing Gardens,<br></br>Growing Communities</h1></a>
+        </header>
+        <div className="organizer-wrapper">
+          <span className="organizer-name">Jane Doe</span>
+          <button className="organizer-contact button">Contact</button>
+        </div>
+
+        {/* <Events currentEvents = {this.state.events} /> */}
       </div>
     );
   }

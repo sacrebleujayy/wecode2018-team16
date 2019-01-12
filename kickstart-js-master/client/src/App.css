@@ -1,10 +1,22 @@
-.App {
-  text-align: center;
+.wrapper {
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.header-wrapper {
+
+}
+
+.header-wrapper a {
+  
+  text-decoration: none;
+}
+
+.header-wrapper h1 {
+  background: url('/assets/gg_logo.jpg') no-repeat center left;
+  color: #e97927;
+  font-size: 14px;
+  padding-left: 212px;
+  text-transform: uppercase;
 }
 
 .App-header {
