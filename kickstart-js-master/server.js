@@ -99,12 +99,12 @@ app.post('/api/addItem', (req, res) => {
 app.post('/api/events/:eventId/attendees', (req, res) => {
   console.log(req.params);
   console.log(req.body);
-  events.forEach(function(event) {
+  toDoList.forEach(function(event) {
     if(event.id == req.params.eventId) {
       event.attendees.push(req.body.id);
-      break;
     }
   });
+  res.send('User added to event!');
 });
 
 if (process.env.NODE_ENV === 'production') {
