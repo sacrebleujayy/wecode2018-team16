@@ -118,7 +118,8 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 function replaceMemberIdsWithNames(events) {
   let eventList = [];
-  for(event in events) {
+  events.forEach(function(event) {
+    console.log("event "+event);
     let newEventItem = {};
     newEventItem.name = event.name;
     newEventItem.date = event.date;
@@ -128,7 +129,6 @@ function replaceMemberIdsWithNames(events) {
     newEventItem.description = event.description;
     let mentorId = event.mentor;
     
-    console.log(event.attendees);
     let attendees = [];
     for(member in memberList) {
       if(member.id == mentorId) {
@@ -141,7 +141,7 @@ function replaceMemberIdsWithNames(events) {
     
     newEventItem.attendees = attendees;
     eventList.push(newEventItem);
-  }
+  });
   
   return eventList;
 }
