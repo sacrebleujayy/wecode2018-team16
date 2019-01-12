@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Events from './Events.js';
+import Supplies from './Supplies';
 
 class EventsWrapper extends Component {
 
@@ -12,8 +13,8 @@ class EventsWrapper extends Component {
         activeView: 'events',
     }
 
-    handleOnClick = (target) => {
-        this.setState({ activeView: target.value})
+    handleOnClick = (e, context) => {
+        this.setState({ activeView: context})
     }
 
     render() {
@@ -22,16 +23,16 @@ class EventsWrapper extends Component {
         return (
             <div>
                 <div id='button-container'>
-                    <button id='events' value='events' onClick={this.handleOnClick}>Events</button>
-                    <button id='supplies' value='supplies' onClick={this.handleOnClick}>Supplies</button>
-                    <button id='connect' value='connect' onClick={this.handleOnClick}>Connect</button> 
+                    <button id='events' onClick={(e, context) => this.handleOnClick(e, 'events')}>Events</button>
+                    <button id='supplies' onClick={(e, context) => this.handleOnClick(e, 'supplies')}>Supplies</button>
+                    <button id='connect'  onClick={(e, context) => this.handleOnClick(e, 'connect')}>Connect</button> 
                 </div>
 
                 {activeView === 'events' &&
                     <Events/>
                 }
                 {activeView === 'supplies' &&
-                    <p>Supplies</p>
+                    <Supplies/>
                 }
                 {activeView === 'connect' &&
                     <p>connect</p>

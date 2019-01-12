@@ -15,47 +15,25 @@ export default class Events extends Component {
 
 
   render() {
-    const raw = new Date();
-    const month = raw.getMonth();
 
     return (
       <div>
         <button>create event</button>
-        
-        <div id='modal-container'>
-          <div id='modal-content'>
-          <span className='close'>X</span>
-          <form>
-            <label>
-              Name:
-              <input type="text" name="name" />
-            </label>
-            <label>
-              Date:
-              <input type='text' name='date' />
-            </label>
-            <label>
-              Address:
-              <input type='text' name='address' />
-            </label>
-            <label>
-              Description:
-              <input type='text' name='Description' />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
-          </div>
-        
-        </div>
-        
-        
-        
-        <h1>{month}</h1>
+    
+        <h1>Jan</h1>
         <button><FaArrowLeft/></button>
         <button><FaArrowRight/></button>
-        <ol>
-
-        </ol>
+        <ul>
+          <li>
+            <div>
+              <h1>Community Potluck</h1>
+              <h2>Hosted by: Amanda P.</h2>
+              <h2>Jan. 5th 6:30pm</h2>
+              <p>1234 Lane St. Portland</p>
+              <p>I have had an excellent harvest and wanted to make some delicous dishes to share. If you would like come out and bring something from your own garden.</p>
+            </div>
+          </li>
+        </ul>
       </div>
 
     )
