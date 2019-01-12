@@ -99,12 +99,12 @@ app.post('/api/addItem', (req, res) => {
 app.post('/api/events/:eventId(\d+)/attendees', (req, res) => {
   console.log(req.params);
   console.log(req.body);
-  for(event in events) {
-    if(event.id = req.params.eventId) {
-      event.attendees.push(req.body.post)
+  events.forEach(function(event) {
+    if(event.id == req.params.eventId) {
+      event.attendees.push(req.body)
       break;
     }
-  }
+  });
 });
 
 if (process.env.NODE_ENV === 'production') {
