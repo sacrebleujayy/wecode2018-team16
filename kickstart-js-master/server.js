@@ -119,7 +119,6 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 function replaceMemberIdsWithNames(events) {
   let eventList = [];
   events.forEach(function(event) {
-    console.log("event "+event);
     let newEventItem = {};
     newEventItem.name = event.name;
     newEventItem.date = event.date;
