@@ -4,19 +4,18 @@ import Events from './Events.js';
 
 class App extends Component {
   state = {
-    district: ''
+    events: []
   };
 
   componentDidMount() {
-    this.getDistrictData();
+    this.getEvents();
   }
 
-  getDistrictData() {
+  getEvents() {
     this.callApi()
       .then(res => {
+        console.log(res.events);
         this.setState({ 
-          district: res.district,
-          comm_organizer: res.comm_organizer,
           events: res.events
         });
       })
@@ -42,6 +41,7 @@ class App extends Component {
           <span className="organizer-name">Jane Doe</span>
           <button className="organizer-contact button">Contact</button>
         </div>
+        
 
         {/* <Events currentEvents = {this.state.events} /> */}
       </div>
