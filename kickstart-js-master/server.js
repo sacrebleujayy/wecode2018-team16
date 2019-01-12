@@ -67,11 +67,11 @@ app.get('/api/events', (req, res) => {
   console.log(req.query);
   let district = req.query.district;
   let newEventList = [];
-  for(event in toDoList) {
+  toDoList.forEach(function(event) {
       if(event.district == district) {
         newEventList.push(event);
       }
-  }
+  });
   let eventList = replaceMemberIdsWithNames(newEventList);
   res.send({ eventList });
 });
