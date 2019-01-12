@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ListItem from './ListItem.js';
+import Supplies from './supplies.js';
 
 class App extends Component {
   state = {
