@@ -133,7 +133,7 @@ function replaceMemberIdsWithNames(events) {
       if(member.id == mentorId) {
         newEventItem.mentor = member.name;
       }
-      if(event.attendees.includes(member.id)) {
+      if(event.attendees != undefined && (event.attendees).includes(member.id)) {
         attendees.push(member.name);
       }
     }
