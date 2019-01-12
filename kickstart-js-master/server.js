@@ -128,14 +128,13 @@ function replaceMemberIdsWithNames(events) {
     newEventItem.description = event.description;
     let mentorId = event.mentor;
     
-    let attendees = event.attendees.slice(0);
+    let attendees = [];
     for(member in memberList) {
       if(member.id == mentorId) {
         newEventItem.mentor = member.name;
       }
-      if(attendees.includes(member.id)) {
-        let index = attendees.indexOf(member.id);
-        attendees[index] = member.name;
+      if(event.attendees.includes(member.id)) {
+        attendees.push(member.name);
       }
     }
     
