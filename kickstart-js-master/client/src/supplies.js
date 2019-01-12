@@ -24,6 +24,30 @@ export default class Supplies extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
+          Name:
+          <input type="text" name="name" />
+        </label>
+        <label>
+          Date:
+          <input type='text' name='date' />
+        </label>
+        <label>
+          Offering Supplies
+          <input
+            name="Offer"
+            type="checkbox"
+            checked={this.state.isGoing}
+            onChange={this.handleInputChange} />
+        </label>
+        <label>
+          Need Supplies
+          <input
+            name="Need"
+            type="checkbox"
+            checked={this.state.isGoing}
+            onChange={this.handleInputChange} />
+        </label>
+        <label>
           Offer or request supplies:
           <textarea value={this.state.value} onChange={this.handleChange} />
         </label>
