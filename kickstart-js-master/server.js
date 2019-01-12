@@ -57,6 +57,9 @@ let memberList = [
   }
 ];
 
+let eventId = "2";
+let memberId = "4";
+
 // API calls
 app.get('/api/hello', (req, res) => {
   let events = replaceMemberIdsWithNames(toDoList);
@@ -67,18 +70,19 @@ app.get('/api/events', (req, res) => {
   console.log(req.query);
   let district = req.query.district;
   let newEventList = [];
-  for(event in toDoList) {
+
+  toDoList.forEach(function(event) {
       if(event.district == district) {
         newEventList.push(event);
       }
-  }
+  });
   let eventList = replaceMemberIdsWithNames(newEventList);
   res.send({ eventList });
 });
   
 app.post('/api/members', (req, res) => {
   console.log(req.body);
-  memberList.put(req.body.post);
+  memberList.push(req.body);
   res.send('Member added!');
 });
   
@@ -89,19 +93,19 @@ app.get('/api/members', (req, res) => {
 app.post('/api/addItem', (req, res) => {
   // displays in the terminal
   console.log(req.body);
-  toDoList.push(req.body.post);
+  toDoList.push(req.body);
   res.send('Event added!');
 });
   
-app.post('/api/events/:eventId(\d+)/attendees', (req, res) => {
+app.post('/api/events/:eventId/attendees', (req, res) => {
   console.log(req.params);
   console.log(req.body);
-  for(event in events) {
-    if(event.id = req.params.eventId) {
-      event.attendees.push(req.body.post)
-      break;
+  toDoList.forEach(function(event) {
+    if(event.id == req.params.eventId) {
+      event.attendees.push(req.body.id);
     }
-  }
+  });
+  res.send('User added to event!');
 });
 
 if (process.env.NODE_ENV === 'production') {
@@ -118,8 +122,10 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 function replaceMemberIdsWithNames(events) {
   let eventList = [];
-  for(event in events) {
-    let newEventItem = {}
+  events.forEach(function(event) {
+    console.log(JSON.stringify(event));
+    let newEventItem = {};
+    newEventItem.id = event.id;
     newEventItem.name = event.name;
     newEventItem.date = event.date;
     newEventItem.address = event.address;
@@ -129,17 +135,18 @@ function replaceMemberIdsWithNames(events) {
     let mentorId = event.mentor;
     
     let attendees = [];
-    for(member in memberList) {
+    memberList.forEach(function(member) {
       if(member.id == mentorId) {
         newEventItem.mentor = member.name;
       }
       if(event.attendees != undefined && (event.attendees).includes(member.id)) {
         attendees.push(member.name);
       }
-    }
+    });
     
     newEventItem.attendees = attendees;
-  }
+    eventList.push(newEventItem);
+  });
   
-  return events;
+  return eventList;
 }

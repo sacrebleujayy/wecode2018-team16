@@ -5,37 +5,35 @@ import EventsWrapper from './EventsWrapper.js';
 
 class App extends Component {
   state = {
-    district: ''
+
+    events: []
   };
 
   componentDidMount() {
-    // this.getDistrictData();
-    // this.callApi();
+    this.getEvents();
   }
 
-  // getDistrictData() {
-  //   this.callApi()
-  //     .then(res => {
-  //       this.setState({ 
-  //         district: res.district,
-  //         comm_organizer: res.comm_organizer,
-  //         events: res.events
-  //       });
-  //     })
-  //     .catch(err => console.log(err));
-  // }
+  getEvents() {
+    this.callApi()
+      .then(res => {
+        console.log(res.events);
+        this.setState({ 
+          events: res.events
+        });
+      })
+      .catch(err => console.log(err));
+  }
 
-  // callApi = async () => {
-  //   const response = await fetch('/api/hello');
-  //   const body = await response.json();
+  callApi = async () => {
+    const response = await fetch('/api/hello');
+    const body = await response.json();
 
-  //   if (response.status !== 200) throw Error(body.message);
+    if (response.status !== 200) throw Error(body.message);
 
-  //   return body;
-  // };
+    return body;
+  };
 
   render() {
-
     return (
       <div className="wrapper">
         <header className="header-wrapper">
@@ -47,6 +45,7 @@ class App extends Component {
         </div>
 
         <EventsWrapper currentEvents = {this.state.events} />
+
 
       </div>
     );
