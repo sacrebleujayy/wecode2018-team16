@@ -130,14 +130,14 @@ function replaceMemberIdsWithNames(events) {
     let mentorId = event.mentor;
     
     let attendees = [];
-    for(member in memberList) {
+    memberList.forEach(function(member) {
       if(member.id == mentorId) {
         newEventItem.mentor = member.name;
       }
       if(event.attendees != undefined && (event.attendees).includes(member.id)) {
         attendees.push(member.name);
       }
-    }
+    });
     
     newEventItem.attendees = attendees;
     eventList.push(newEventItem);
