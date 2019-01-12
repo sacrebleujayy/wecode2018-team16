@@ -59,25 +59,21 @@ let memberList = [
 
 // API calls
 app.get('/api/hello', (req, res) => {
-  let events = toDoList;
-  // replace member ids with names
-  for(event in events) {
-    let mentorId = event.mentor;
-    let attendees = event.attendees;
-    for(member in memberList) {
-      if(member.id = mentorId) {
-        event.mentor = member.name;
-      }
-      if(attendees.includes(member.id)) {
-        let index = attendees.indexOf(member.id);
-        attendees[index] = member.name;
-      }
-    }
-    
-    event.attendees = attendees;
-  }
-  
+  let events = replaceMemberIdsWithNames(toDoList);
   res.send({ events });
+});
+
+app.get('/api/events', (req, res) => {
+  console.log(req.query);
+  let district = req.query.district;
+  let newEventList = [];
+  for(event in toDoList) {
+      if(event.district == district) {
+        newEventList.push(event);
+      }
+  }
+  let eventList = replaceMemberIdsWithNames(newEventList);
+  res.send({ eventList });
 });
   
 app.post('/api/members', (req, res) => {
@@ -119,3 +115,31 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+function replaceMemberIdsWithNames(events) {
+  let eventList = [];
+  for(event in events) {
+    let newEventItem = {}
+    newEventItem.name = event.name;
+    newEventItem.date = event.date;
+    newEventItem.address = event.address;
+    newEventItem.district = event.district;
+    newEventItem.types = event.types;
+    newEventItem.description = event.description;
+    let mentorId = event.mentor;
+    let attendees = event.attendees.slice();
+    for(member in memberList) {
+      if(member.id == mentorId) {
+        newEventItem.mentor = member.name;
+      }
+      if(attendees.includes(member.id)) {
+        let index = attendees.indexOf(member.id);
+        attendees[index] = member.name;
+      }
+    }
+    
+    newEventItem.attendees = attendees;
+  }
+  
+  return events;
+}
