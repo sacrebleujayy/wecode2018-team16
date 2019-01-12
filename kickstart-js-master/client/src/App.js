@@ -35,6 +35,7 @@ class App extends Component {
   };
 
   render() {
+
     return (
       <div className="wrapper">
         <header className="header-wrapper">
@@ -46,6 +47,7 @@ class App extends Component {
         </div>
 
         {/* <EventsWrapper currentEvents = {this.state.events} /> */}
+
       </div>
     );
   }
