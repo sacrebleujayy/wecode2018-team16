@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import ListItem from './ListItem.js';
+import Events from './Events.js';
 
 class App extends Component {
   state = {
@@ -44,30 +44,10 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.response);
+
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>To Do List</h1>
-        </header>
-        <ul className="to-do-list">
-       {this.state.list.length > 0 && this.state.list.map((listItem, index) => (
-          <ListItem text={listItem} />
-        ))}
-          
-        </ul>
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            <strong>Post to Server:</strong>
-          </p>
-          <input
-            type="text"
-            value={this.state.post}
-            onChange={e => this.setState({ post: e.target.value })}
-          />
-          <button className="submit-button" type="submit">Submit</button>
-        </form>
-        <p>{this.state.responseToPost}</p>
+        <Events/>
       </div>
     );
   }
