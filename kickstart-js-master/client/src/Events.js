@@ -8,7 +8,6 @@ export default class Events extends React.Component {
   render() {
     const raw = new Date();
     const month = raw.getMonth();
-
     return (
       <div>
         <button>create event</button>
