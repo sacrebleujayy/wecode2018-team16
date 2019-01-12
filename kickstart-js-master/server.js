@@ -10,20 +10,102 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // To Do List / Faux data store
 let toDoList = [
-  'Create an awesome hackathon project!',
-  'Don\'t forget to take a break'
+  {
+    'id':'1',
+    'name':'Boiling Dandelions',
+    'date':'2019-01-13T01:00:00.000Z',
+    'address':'42 Wallaby Way, Sydney',
+    'district':'13',
+    'types':['cooking'],
+    'mentor':'1',
+    'attendees':['2','3']
+    'description':'Did you know that you can eat dandelions? Let\'s make a delicious dandelion soup!'
+  },
+  {
+    'id':'2',
+    'name':'Garden Zuchinis',
+    'date':'2019-01-13T02:00:00.000Z',
+    'address':'2203 NE Oregon St, Portland, OR 97232',
+    'district':'Mr. Roger\'s Neighborhood',
+    'types':['kids','gardening'],
+    'mentor':'2',
+    'attendess':['1','4'],
+    'description':'You get a zuchini! You get a zuchini! Everybody gets a zuchini!'
+  }
+];
+    
+let memberList = [
+  {
+    'id':'1',
+    'name':'Dr. P Sherman',
+    'email':'psherman@gmail.com'
+  },
+  {
+    'id':'2',
+    'name':'Nemo Clownfish',
+    'email':'nemo@gmail.com'
+  },
+  {
+    'id':'3',
+    'name':'Mr. Roger',
+    'email':'roger@gmail.com'
+  },
+  {
+    'id':'4',
+    'name':'Snuffleupagus',
+    'email':'snuffleupagus@gmail.com'
+  }
 ];
 
 // API calls
 app.get('/api/hello', (req, res) => {
-  res.send({ toDoList });
+  let events = toDoList;
+  // replace member ids with names
+  for(event in events) {
+    let mentorId = event.mentor;
+    let attendees = event.attendees;
+    for(member in memberList) {
+      if(member.id = mentorId) {
+        event.mentor = member.name;
+      }
+      if(attendees.includes(member.id)) {
+        let index = attendees.indexOf(member.id);
+        attendees[index] = member.name;
+      }
+    }
+    
+    event.attendees = attendees;
+  }
+  
+  res.send({ events });
+});
+  
+app.post('/api/members', (req, res) => {
+  console.log(req.body);
+  memberList.put(req.body.post);
+  res.send('Member added!');
+});
+  
+app.get('/api/members', (req, res) => {
+  res.send({ memberList });
 });
 
 app.post('/api/addItem', (req, res) => {
   // displays in the terminal
   console.log(req.body);
   toDoList.push(req.body.post);
-  res.send('Item added!');
+  res.send('Event added!');
+});
+  
+app.post('/api/events/:eventId(\d+)/attendees', (req, res) => {
+  console.log(req.params);
+  console.log(req.body);
+  for(event in events) {
+    if(event.id = req.params.eventId) {
+      event.attendees.push(req.body.post)
+      break;
+    }
+  }
 });
 
 if (process.env.NODE_ENV === 'production') {
