@@ -57,6 +57,9 @@ let memberList = [
   }
 ];
 
+let eventId = "2";
+let memberId = "4";
+
 // API calls
 app.get('/api/hello', (req, res) => {
   let events = replaceMemberIdsWithNames(toDoList);
@@ -78,7 +81,7 @@ app.get('/api/events', (req, res) => {
   
 app.post('/api/members', (req, res) => {
   console.log(req.body);
-  memberList.put(req.body.post);
+  memberList.push(req.body.post);
   res.send('Member added!');
 });
   
