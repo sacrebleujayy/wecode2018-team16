@@ -101,7 +101,7 @@ app.post('/api/events/:eventId(\d+)/attendees', (req, res) => {
   console.log(req.body);
   events.forEach(function(event) {
     if(event.id == req.params.eventId) {
-      event.attendees.push(req.body)
+      event.attendees.push(req.body.memberId)
       break;
     }
   });
