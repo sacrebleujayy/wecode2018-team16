@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Events.css'
 
 export default class Events extends React.Component {
@@ -8,7 +9,7 @@ export default class Events extends React.Component {
   }
 
   state = {
-    
+
   }
 
 

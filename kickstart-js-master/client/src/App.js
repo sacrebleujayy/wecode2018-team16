@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-// import EventsWrapper from './EventsWrapper.js';
+import EventsWrapper from './EventsWrapper.js';
 
 
 class App extends Component {
@@ -46,7 +46,7 @@ class App extends Component {
           <button className="organizer-contact button">Contact</button>
         </div>
 
-        {/* <EventsWrapper currentEvents = {this.state.events} /> */}
+        <EventsWrapper currentEvents = {this.state.events} />
 
       </div>
     );

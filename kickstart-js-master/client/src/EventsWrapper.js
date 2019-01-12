@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Events from './Events.js';
 
 class EventsWrapper extends Component {
@@ -8,7 +9,11 @@ class EventsWrapper extends Component {
     }
 
     state = {
-        activeView: '',
+        activeView: 'events',
+    }
+
+    handleOnClick = (context) => {
+        this.setState({ activeView: context})
     }
 
     render() {
@@ -16,7 +21,13 @@ class EventsWrapper extends Component {
 
         return (
             <div>
-                {activeView === '' &&
+                <div id='button-container'>
+                    <button id='events' onClick={this.handleOnClick('events')}>Events</button>
+                    <button id='supplies' onClick={this.handleOnClick('supplies')}>Supplies</button>
+                    <button id='connect' onClick={this.handleOnClick('connect')}>Connect</button> 
+                </div>
+
+                {activeView === 'events' &&
                     <Events/>
                 }
                 {activeView === 'supplies' &&
