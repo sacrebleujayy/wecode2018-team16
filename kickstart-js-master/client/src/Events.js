@@ -3,11 +3,19 @@ import './Events.css'
 
 export default class Events extends React.Component {
 
+  static propTypes = {
+    currentEvents: PropTypes.object,
+  }
+
+  state = {
+    
+  }
 
 
   render() {
     const raw = new Date();
     const month = raw.getMonth();
+
     return (
       <div>
         <button>create event</button>
