@@ -9,7 +9,8 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.getDistrictData();
+    // this.getDistrictData();
+    this.callApi();
   }
 
   getDistrictData() {
