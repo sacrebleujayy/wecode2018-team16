@@ -18,7 +18,7 @@ let toDoList = [
     'district':'13',
     'types':['cooking'],
     'mentor':'1',
-    'attendees':['2','3']
+    'attendees':['2','3'],
     'description':'Did you know that you can eat dandelions? Let\'s make a delicious dandelion soup!'
   },
   {
